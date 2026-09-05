@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subscription Saver — Track & Optimize Your Recurring Costs</title>
+  <meta name="description" content="A minimalist dashboard to track recurring monthly subscriptions and analyze their financial impact relative to your income.">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="5" width="20" height="14" rx="3" />
+            <line x1="2" y1="10" x2="22" y2="10" />
+            <circle cx="6.5" cy="14.5" r="1.5" />
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1 class="app-title">Subscription Saver</h1>
+          <span class="brand-tag">Personal Finance</span>
+        </div>
+      </div>
+
+      <!-- Desktop Navigation / Quick Info -->
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="#dashboard" class="nav-link active">Dashboard</a></li>
+          <li><a href="#income-section" class="nav-link">Income</a></li>
+          <li><a href="#subscriptions-section" class="nav-link">Subscriptions</a></li>
+          <li><a href="#results-section" class="nav-link">Impact Summary</a></li>
+        </ul>
+      </nav>
+
+      <!-- Mobile Hamburger Button -->
+      <button 
+        type="button" 
+        class="hamburger-btn" 
+        id="hamburger-btn" 
+        aria-label="Toggle navigation menu" 
+        aria-controls="mobile-nav" 
+        aria-expanded="false"
+      >
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer / Dropdown -->
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile Navigation">
+      <div class="mobile-nav-inner">
+        <ul class="mobile-nav-list">
+          <li>
+            <a href="#dashboard" class="mobile-nav-link active">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="#income-section" class="mobile-nav-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              <span>Monthly Income</span>
+            </a>
+          </li>
+          <li>
+            <a href="#subscriptions-section" class="mobile-nav-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              <span>Subscriptions</span>
+            </a>
+          </li>
+          <li>
+            <a href="#results-section" class="mobile-nav-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              <span>Results & Overview</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="mobile-nav-footer">
+          <p class="quick-tip-title">Smart Tip</p>
+          <p class="quick-tip-text">Financial experts recommend keeping non-essential subscription spend below 10% of net income.</p>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content Dashboard -->
+  <main class="dashboard-wrapper" id="dashboard">
+    <!-- Intro / Overview Banner -->
+    <section class="intro-banner">
+      <div class="intro-content">
+        <h2 class="intro-headline">Take control of recurring expenses</h2>
+        <p class="intro-subtext">
+          Enter your monthly earnings and active subscriptions below. See their direct impact on your budget and annual cash flow in real time.
+        </p>
+      </div>
+      <div class="privacy-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <span>No sign-up required &bull; 100% Client-side</span>
+      </div>
+    </section>
+
+    <!-- Main Responsive Grid -->
+    <div class="dashboard-grid">
+      <!-- Left Column: Input Forms -->
+      <div class="dashboard-forms">
+        
+        <!-- Income Section Card -->
+        <section class="card income-card" id="income-section" aria-labelledby="income-heading">
+          <div class="card-header">
+            <div class="card-header-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="1" x2="12" y2="23" />
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="card-title" id="income-heading">Monthly Income</h3>
+              <p class="card-subtitle">Your total take-home pay after taxes</p>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="form-group">
+              <label for="monthly-income" class="form-label">Net Monthly Earnings</label>
+              <div class="input-with-affix">
+                <span class="input-prefix" aria-hidden="true">$</span>
+                <input 
+                  type="number" 
+                  id="monthly-income" 
+                  name="monthlyIncome" 
+                  class="form-input text-lg" 
+                  placeholder="e.g. 4500" 
+                  min="0" 
+                  step="any" 
+                  inputmode="decimal"
+                  aria-describedby="income-helper"
+                >
+              </div>
+              <span id="income-helper" class="form-helper-text">Used to calculate subscription expense percentage.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Subscriptions Form Card -->
+        <section class="card subscriptions-card" id="subscriptions-section" aria-labelledby="subscriptions-heading">
+          <div class="card-header">
+            <div class="card-header-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+              </svg>
+            </div>
+            <div class="card-header-text">
+              <h3 class="card-title" id="subscriptions-heading">Recurring Subscriptions</h3>
+              <p class="card-subtitle">Streaming, software, memberships, and services</p>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <!-- Dynamic Entries Container -->
+            <div class="subscriptions-list-container" id="subscriptions-list" role="list">
+              
+              <!-- Initial Subscription Entry Row -->
+              <div class="subscription-item-row" role="listitem">
+                <div class="form-group service-name-group">
+                  <label for="sub-service-1" class="form-label">Service Name</label>
+                  <input 
+                    type="text" 
+                    id="sub-service-1" 
+                    name="serviceName[]" 
+                    class="form-input service-name-input" 
+                    placeholder="e.g. Netflix, Spotify, Gym"
+                  >
+                </div>
+
+                <div class="form-group service-cost-group">
+                  <label for="sub-cost-1" class="form-label">Monthly Cost</label>
+                  <div class="input-with-affix">
+                    <span class="input-prefix" aria-hidden="true">$</span>
+                    <input 
+                      type="number" 
+                      id="sub-cost-1" 
+                      name="serviceCost[]" 
+                      class="form-input service-cost-input" 
+                      placeholder="0.00" 
+                      min="0" 
+                      step="0.01" 
+                      inputmode="decimal"
+                    >
+                  </div>
+                </div>
+
+                <!-- Delete item action placeholder (ready for dynamic removal) -->
+                <button 
+                  type="button" 
+                  class="btn-icon-danger remove-sub-btn" 
+                  title="Remove subscription" 
+                  aria-label="Remove subscription"
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    <line x1="10" y1="11" x2="10" y2="17"></line>
+                    <line x1="14" y1="11" x2="14" y2="17"></line>
+                  </svg>
+                </button>
+              </div>
+
+            </div>
+
+            <!-- Action Buttons Group -->
+            <div class="form-actions-group">
+              <button type="button" class="btn btn-secondary" id="add-subscription-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <span>Add Subscription</span>
+              </button>
+
+              <button type="button" class="btn btn-primary" id="calculate-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+                  <line x1="8" y1="6" x2="16" y2="6"></line>
+                  <line x1="16" y1="14" x2="16" y2="18"></line>
+                  <path d="M16 10h.01"></path>
+                  <path d="M12 10h.01"></path>
+                  <path d="M8 10h.01"></path>
+                  <path d="M12 14h.01"></path>
+                  <path d="M8 14h.01"></path>
+                  <path d="M12 18h.01"></path>
+                  <path d="M8 18h.01"></path>
+                </svg>
+                <span>Calculate Total Cost</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Right Column: Results Display Section -->
+      <aside class="dashboard-sidebar" id="results-section" aria-labelledby="results-heading">
+        <section class="card results-card">
+          <div class="card-header">
+            <div class="card-header-icon highlight-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="card-title" id="results-heading">Financial Impact</h3>
+              <p class="card-subtitle">Real-time breakdown of recurring costs</p>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <!-- Metrics Grid -->
+            <div class="metrics-grid">
+              
+              <!-- Metric 1: Total Monthly -->
+              <div class="metric-box">
+                <div class="metric-meta">
+                  <span class="metric-label">Monthly Expenses</span>
+                  <span class="metric-badge">Recurring</span>
+                </div>
+                <div class="metric-value-wrapper">
+                  <span class="metric-value" id="total-monthly-cost">$0.00</span>
+                </div>
+                <p class="metric-description">Total recurring costs per calendar month</p>
+              </div>
+
+              <!-- Metric 2: Total Yearly -->
+              <div class="metric-box">
+                <div class="metric-meta">
+                  <span class="metric-label">Yearly Projection</span>
+                  <span class="metric-badge badge-accent">Annualized</span>
+                </div>
+                <div class="metric-value-wrapper">
+                  <span class="metric-value" id="total-yearly-cost">$0.00</span>
+                </div>
+                <p class="metric-description">Cumulative 12-month commitment</p>
+              </div>
+
+              <!-- Metric 3: Percentage of Income -->
+              <div class="metric-box metric-box-featured">
+                <div class="metric-meta">
+                  <span class="metric-label">Share of Monthly Income</span>
+                  <span class="metric-status-badge" id="income-impact-badge">Awaiting calculation</span>
+                </div>
+                <div class="metric-value-wrapper">
+                  <span class="metric-value text-gradient" id="income-percentage">0.0%</span>
+                </div>
+                <div class="progress-bar-track" aria-hidden="true">
+                  <div class="progress-bar-fill" id="percentage-bar" style="width: 0%;"></div>
+                </div>
+                <p class="metric-description">Portion of take-home pay consumed by subscriptions</p>
+              </div>
+
+            </div>
+
+            <!-- Contextual Insights Card -->
+            <div class="insights-callout">
+              <div class="callout-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="16" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                <span>Budget Guidance</span>
+              </div>
+              <p class="callout-body">
+                Keeping recurring subscriptions below <strong>5%–8%</strong> of net income helps protect your emergency fund and investment contributions.
+              </p>
+            </div>
+          </div>
+        </section>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- App Footer -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <p class="footer-text">
+        &copy; 2026 <strong>Subscription Saver</strong> &bull; Minimalist financial clarity.
+      </p>
+      <p class="footer-subtext">
+        Runs purely in your browser. No cookies, no storage, no trackers.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
